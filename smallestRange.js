@@ -45,29 +45,7 @@ function smallestRange(lists) {
     max = Math.max(max, lists[i][0]);
   }
 
-  // Fonction pour maintenir les propriétés du tas minimum
-  const heapify = (index) => {
-    let smallest = index;
-    const left = 2 * index + 1;
-    const right = 2 * index + 2;
-
-    if (left < minHeap.length && minHeap[left].value < minHeap[smallest].value) {
-      smallest = left;
-    }
-    if (right < minHeap.length && minHeap[right].value < minHeap[smallest].value) {
-      smallest = right;
-    }
-
-    if (smallest !== index) {
-      [minHeap[smallest], minHeap[index]] = [minHeap[index], minHeap[smallest]];
-      heapify(smallest);
-    }
-  };
-
-  // Construire le tas minimum
-  for (let i = Math.floor(minHeap.length / 2) - 1; i >= 0; i--) {
-    heapify(i);
-  }
+  // ... (le reste de la fonction)
 
   while (true) {
     const { value, listIndex, elementIndex } = minHeap[0];
