@@ -12,26 +12,26 @@ module.exports = function testResult(args, callback) {
     return async function(callback) {
       const [func, args, expected, testDescription] = test;
 
-      const startTime = performance.now();
-      const initialMemoryUsage = process.memoryUsage().heapUsed;
+      // const startTime = performance.now();
+      // const initialMemoryUsage = process.memoryUsage().heapUsed;
 
       const result = await func(...args);
 
-      const endTime = performance.now();
-      const finalMemoryUsage = process.memoryUsage().heapUsed;
+      // const endTime = performance.now();
+      // const finalMemoryUsage = process.memoryUsage().heapUsed;
 
-      const timeTaken = endTime - startTime;
-      const memoryUsed = finalMemoryUsage - initialMemoryUsage;
+      // const timeTaken = endTime - startTime;
+      // const memoryUsed = finalMemoryUsage - initialMemoryUsage;
 
       // Calcul du score
-      const timeScore = Math.max(0, 100 - (timeTaken / idealTime) * 100);
-      const memoryScore = Math.max(0, 100 - (memoryUsed / idealMemory) * 100);
-      const overallScore = (timeScore + memoryScore) / 2;
+      // const timeScore = Math.max(0, 100 - (timeTaken / idealTime) * 100);
+      // const memoryScore = Math.max(0, 100 - (memoryUsed / idealMemory) * 100);
+      // const overallScore = (timeScore + memoryScore) / 2;
 
-      console.log(`\nTest: ${testDescription}`);
-      console.log(`Temps d'exécution: ${timeTaken.toFixed(2)} ms, Score: \x1b[31m${timeScore.toFixed(2)}\x1b[0m`);
-      console.log(`Mémoire utilisée: ${memoryUsed} bytes, Score: \x1b[31m${memoryScore.toFixed(2)}\x1b[0m`);
-      console.log(`\x1b[32mScore global: ${overallScore.toFixed(2)}\x1b[0m`);
+      // console.log(`\nTest: ${testDescription}`);
+      // console.log(`Temps d'exécution: ${timeTaken.toFixed(2)} ms, Score: \x1b[31m${timeScore.toFixed(2)}\x1b[0m`);
+      // console.log(`Mémoire utilisée: ${memoryUsed} bytes, Score: \x1b[31m${memoryScore.toFixed(2)}\x1b[0m`);
+      // console.log(`\x1b[32mScore global: ${overallScore.toFixed(2)}\x1b[0m`);
 
       if (JSON.stringify(result) !== JSON.stringify(expected)) {
         console.log("Test échoué:", testDescription);
